@@ -17,3 +17,6 @@ jobs:
       with:
         status: ${{ job.status }}
 
+    - name: Fail
+      run: exit 1
+
