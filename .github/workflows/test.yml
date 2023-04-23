@@ -8,6 +8,17 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+        - code: 0
+          name: Succeeds
+        - code: 1
+          name: Fails
+
+    name: Custom-job-name for ${{ matrix.name }}
+
     steps:
     - name: Checkout
       uses: actions/checkout@v3
@@ -15,6 +26,6 @@ jobs:
     - name: Test
       uses: ./action
 
-    - name: Fail
-      run: exit 1
+    - name: Exit
+      run: exit ${{ matrix.code }}
 
