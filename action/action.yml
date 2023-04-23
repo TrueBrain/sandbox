@@ -1,0 +1,12 @@
+name: Test
+description: Test
+inputs:
+  status:
+    description: Status of job
+runs:
+  using: node16
+  post: post.js
+branding:
+  icon: archive
+  color: gray-dark
+
