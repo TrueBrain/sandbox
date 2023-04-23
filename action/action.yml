@@ -3,6 +3,7 @@ description: Test
 inputs:
   status:
     description: Status of job
+    default: ${{ job.status }}
 runs:
   using: node16
   main: dist/index.js

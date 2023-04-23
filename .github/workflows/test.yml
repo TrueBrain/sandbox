@@ -14,8 +14,6 @@ jobs:
 
     - name: Test
       uses: ./action
-      with:
-        status: ${{ job.status }}
 
     - name: Fail
       run: exit 1
