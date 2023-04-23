@@ -5,7 +5,8 @@ inputs:
     description: Status of job
 runs:
   using: node16
-  post: post.js
+  main: dist/index.js
+  post: dist/index.js
 branding:
   icon: archive
   color: gray-dark
