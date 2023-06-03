@@ -1,0 +1,14 @@
+name: Release
+
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  release:
+    name: Release
+    uses: TrueBrain/OpenTTD-actions/.github/workflows/rw-entry-release-docker-nomad.yml@reusing-workflows
+    with:
+      service: wiki
+      url: https://wiki.openttd.org/
