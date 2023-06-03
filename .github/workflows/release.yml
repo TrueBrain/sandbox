@@ -1,0 +1,25 @@
+name: Release
+
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  release:
+    name: Release
+    uses: TrueBrain/OpenTTD-actions/.github/workflows/rw-docker-build.yml@reusing-workflows
+    with:
+      publish: true
+
+  deploy:
+    needs:
+    - release
+    name: Deploy
+    uses: TrueBrain/OpenTTD-actions/.github/workflows/rw-nomad-deploy.yml@reusing-workflows
+    secrets: inherit
+    with:
+      is_preview: false
+      service: wiki
+      url_production: https://wiki.openttd.org/
+      version: "@sha256:${{ needs.release.outputs.digest }}"

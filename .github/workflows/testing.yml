@@ -1,0 +1,17 @@
+name: Testing
+
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+    branches:
+    - main
+
+jobs:
+  testing:
+    name: Testing
+    uses: TrueBrain/OpenTTD-actions/.github/workflows/rw-testing-docker-py.yml@reusing-workflows
+    with:
+      path: code
+      python-version: 3.8
