@@ -1,0 +1,16 @@
+name: Preview (Labeled)
+
+on:
+  pull_request_target:
+    types:
+    - labeled
+    - opened
+    - synchronize
+
+# You cannot put an "if" on a whole workflow, so we use reusing workflows
+# to only have one skipped job if this PR doesn't have a preview label.
+jobs:
+  has_preview_label:
+    if: ${{ contains(github.event.pull_request.labels.*.name, 'preview') }}
+    name: Preview
+    uses: ./.github/workflows/rw-preview.yml
