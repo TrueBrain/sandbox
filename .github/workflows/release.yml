@@ -8,7 +8,7 @@ on:
 jobs:
   release:
     name: Release
-    uses: OpenTTD/actions/.github/workflows/rw-entry-release-docker-nomad.yml@v4
+    uses: TrueBrain/OpenTTD-actions/.github/workflows/rw-entry-release-docker-nomad.yml@reusing-workflows
     secrets: inherit
     with:
       service: wiki
