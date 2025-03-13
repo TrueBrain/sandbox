@@ -1,0 +1,25 @@
+name: Upload (Steam)
+
+on:
+  push:
+
+jobs:
+  upload:
+    name: Upload (Steam)
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Setup steamcmd
+      uses: CyberAndrii/setup-steamcmd@v1
+
+    - name: Generate Steam auth code
+      id: steam-totp
+      uses: CyberAndrii/steam-totp@v1
+      with:
+        shared_secret: ${{ secrets.STEAM_SHARED_SECRET }}
+
+    - name: Upload to Steam (dummy)
+      run: |
+        steamcmd +login ${{ secrets.STEAM_USERNAME }} ${{ secrets.STEAM_PASSWORD }} ${{ steps.steam-totp.outputs.code }} +force_install_dir ./test +quit
+
